@@ -1,10 +1,11 @@
+import os
 import streamlit as st
 import streamlit.components.v1 as components
 import pickle
 
 with open('random_forest_model.h5', 'rb') as file:
     model = pickle.load(file)
-    
+
 def predict_popu(R_KD, B_KD, R_SUB_ATT, B_SUB_ATT, R_CTRL,
        B_CTRL, R_LANDED_HEAD, B_LANDED_HEAD, R_LANDED_GROUND,
        B_LANDED_GROUND,R_LANDED_BODY,B_LANDED_BODY,R_LANDED_LEG,B_LANDED_LEG,
@@ -21,16 +22,10 @@ def predict_popu(R_KD, B_KD, R_SUB_ATT, B_SUB_ATT, R_CTRL,
 def main():
     st.image('https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/UFC_Logo.svg/330px-UFC_Logo.svg.png',width=300)
     st.title("Optimize UFC fights for Betting")
-    html_temp2 = """
-        <div style="background-color:royalblue;padding:10px;border-radius:10px">
-        <h2 style='color:white;text-align:center;'>Hello</h2>
-        <h1 style="color:white,text-align:center;"></h1>
-        </div>
-    """
     title_bout = st.selectbox(
             'Is this title bout',
             (False, True))
-#     components.html(html_temp2)
+
     col1, col2, = st.columns(2)
     with col1:
         R_Stance = st.selectbox(
@@ -98,10 +93,10 @@ def main():
         elif title_bout == False:
             title_bout = 0
         result = predict_popu(R_KD, B_KD,R_SUB_ATT, B_SUB_ATT, R_CTRL,
-       B_CTRL, R_LANDED_HEAD, B_LANDED_HEAD, R_LANDED_GROUND,
-       B_LANDED_GROUND,R_LANDED_BODY,B_LANDED_BODY,R_LANDED_LEG,B_LANDED_LEG,
-    R_LANDED_CLINCH,B_LANDED_CLINCH,
-       title_bout,B_Stance,R_Stance,B_current_win_streak,R_current_win_streak)
+           B_CTRL, R_LANDED_HEAD, B_LANDED_HEAD, R_LANDED_GROUND,
+           B_LANDED_GROUND,R_LANDED_BODY,B_LANDED_BODY,R_LANDED_LEG,B_LANDED_LEG,
+            R_LANDED_CLINCH,B_LANDED_CLINCH,
+           title_bout,B_Stance,R_Stance,B_current_win_streak,R_current_win_streak)
         if result == 2:
             result = 'The winner from Red corner'
         elif result == 0:
@@ -109,8 +104,6 @@ def main():
         elif result == 1:
             result = 'Is a Draw'
         st.success(format(result))
-
-
     
-
-main()
+if __name__ == '__main__':
+    main()
