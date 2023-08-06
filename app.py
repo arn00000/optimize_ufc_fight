@@ -57,10 +57,6 @@ def main():
     with col2:
         B_SIG_TD = st.slider('B_Take down attemp', 0, 20)
     with col1:
-        R_LANDED_GROUND = st.slider('R_Ground and Pound', 0, 100)
-    with col2:
-        B_LANDED_GROUND = st.slider('B_Ground and Pound', 0, 100)
-    with col1:
         R_LANDED_HEAD = st.slider('R_Significant strike on head', 0, 100)
     with col2:
         B_LANDED_HEAD = st.slider('B_Significant strike on head', 0, 100)
@@ -73,13 +69,18 @@ def main():
     with col2:
         B_LANDED_LEG = st.slider('B_Significant strike on leg', 0, 100)
     with col1:
+        R_DISTANCE = st.slider('R_DISTANCE', 0, 150)
+    with col2:
+        B_DISTANCE = st.slider('B_DISTANCE', 0, 150)
+    with col1:
         R_LANDED_CLINCH = st.slider('R_Clinch attemp', 0, 50)
     with col2:
         B_LANDED_CLINCH = st.slider('B_Clinch attemp', 0, 50)
     with col1:
-        R_DISTANCE = st.slider('R_DISTANCE', 0, 150)
+        R_LANDED_GROUND = st.slider('R_Ground and Pound', 0, 100)
     with col2:
-        B_DISTANCE = st.slider('B_DISTANCE', 0, 150)
+        B_LANDED_GROUND = st.slider('B_Ground and Pound', 0, 100)
+  
         
     result=''
     st.text("Prediction accuracy up to 87%")
